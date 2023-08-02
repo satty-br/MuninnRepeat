@@ -1,4 +1,4 @@
-#MuninnRepeat - HTTP repeat Attack Tool
+#MuninnRepeat - HTTP race condition Attack Tool
 ```
                                         +-----------------+
                                         |HTTP Request     +--------------------+
