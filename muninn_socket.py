@@ -93,7 +93,7 @@ def parse_data(domain, endpoint, method, data,headers):
         last_character = data[-1]
         request_body = f"{request_body}" \
             f"Content-Type: application/json\r\n" \
-            f"Content-Length: {len(data)}\r\n\r\n" \
+            f"Content-Length: {str(len(data)+1)}\r\n\r\n" \
             f"{characters_except_last}"
     
     return request_body, last_character
