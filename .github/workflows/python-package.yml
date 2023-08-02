@@ -1,0 +1,33 @@
+name: Python Build and Release
+
+on:
+  pull_request: # test
+    branches: [ "main" ]
+  push:
+    branches:
+      - main 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  
+
+    - name: 'Get Previous tag'
+      id: previous_tag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      with:
+        fallback: 1.0.0
+
+    - name: Upload to Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{steps.previous_tag.outputs.tag}}
+        token: ${{ secrets.GITHUB_TOKEN }}
